@@ -3,23 +3,6 @@ import { create_greeting } from '../services/greeting_service';
 import { validate_name } from '../utils/validation';
 
 export async function trigger_test(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
-    const name = request.query.get('name') || 'World';
-
-    // Validate the name input
-    if (!validate_name(name)) {
-        context.res = {
-            status: 400,
-            body: "Invalid name provided. Please use alphanumeric characters, spaces, or underscores."
-        };
-        return;
-    }
-
-    // Generate the greeting message
-    const greeting = create_greeting(name);
-    context.res = {
-        // status defaults to 200 if not specified
-        body: greeting
-    };
     try{    
         context.log(`Http function processed request for url "${request.url}"`);
         const name: string = request.query.get('name') || await request.text() || 'world';
