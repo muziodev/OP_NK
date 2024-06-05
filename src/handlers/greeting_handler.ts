@@ -19,4 +19,3 @@ app.http('trigger_test', {
     authLevel: 'anonymous',
     handler: trigger_test
 });
-
