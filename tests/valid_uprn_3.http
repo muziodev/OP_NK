@@ -1,6 +1,0 @@
-POST http://localhost:7071/api/PricePaidDataAndHistory?version=20240213_v1
-Content-Type: application/json
-
-{
-    "uprn": "100000003061"
-}
