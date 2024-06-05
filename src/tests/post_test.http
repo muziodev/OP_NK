@@ -1,6 +1,4 @@
 POST http://localhost:7071/api/trigger_test
-Content-Type: application/json
+Content-Type: text/plain;charset=UTF-8
 
-{
-    "name": "bob"
-}
+bob
