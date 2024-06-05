@@ -1,2 +1,2 @@
 GET http://localhost:7071/api/trigger_test
-Accept: text/plain;charset=UTF-8
+Accept: application/json
