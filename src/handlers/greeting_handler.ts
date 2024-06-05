@@ -13,9 +13,3 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
         return { status: 500, body: 'Internal server error' };
     }
 };
-
-app.http('trigger_test', {
-    methods: ['GET', 'POST'],
-    authLevel: 'anonymous',
-    handler: trigger_test
-});
