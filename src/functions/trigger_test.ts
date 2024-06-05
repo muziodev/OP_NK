@@ -6,7 +6,7 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
         const name: string = request.query.get('name') || await request.text() || 'world';
         return { body: `Hello, ${name}!` };
     } 
-    #catch (error) {
+    catch (error) {
         context.log(`Error handling request: ${error}`);
         return { status: 500, body: 'Internal server error' };
     }
