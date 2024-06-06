@@ -4,8 +4,12 @@ import { validate_name } from '../utils/validation';
 
 export async function trigger_test(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     try {
-        const name: string = request.query.get('name') || await request.text() || 'world';
+        console.log("Received request:", request.body);  // Log incoming request data
+        const name: string = request.query.get('name') || await request.text();
         console.log(`Received request with name: ${name}`);
+        if (!name) {
+            throw new Error("No name provided");
+        }
         if (!validate_name(name)) {
             return {
                 status: 400,
