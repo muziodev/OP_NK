@@ -1,0 +1,1 @@
+import { trigger_test } from '../handlers/greeting_handler';
