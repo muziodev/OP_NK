@@ -7,8 +7,8 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
         console.log("Received request:", request.body);  // Log incoming request data
         const name: string = request.query.get('name') || await request.text();
         console.log("Extracted name:", name);  // Confirm name is extracted correctly
-        if (!name) {
-            throw new Error("No name provided");
+        if (!name || !name.trim()) {
+            throw new Error("No name provided or name is empty");
         }
         if (!validate_name(name)) {
             return {
@@ -16,13 +16,14 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
                 body: 'Invalid name provided.'
             };
         }
-
+        console.log("Name is valid, creating greeting...");
         const greeting = create_greeting(name);
         return {
             status: 200,
             body: greeting
         };
     } catch (error) {
+        console.error("Error in greetingHandler:", error.message);
         return {
             status: 500,
             body: 'Internal server error'
