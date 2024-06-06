@@ -9,9 +9,11 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
         console.log("Extracted name:", name);  // Confirm name is extracted correctly
         if (!name || !name.trim()) {
             throw new Error("No name provided or name is empty");
+            //throw new missing_name_error();
         }
         if (!validate_name(name)) {
             throw new Error("Invalid name provided");
+            //throw new invalid_name_error();
             //return {
                 //status: 400,
                 //body: 'Invalid name provided.'
