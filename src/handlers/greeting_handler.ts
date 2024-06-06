@@ -11,10 +11,11 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
             throw new Error("No name provided or name is empty");
         }
         if (!validate_name(name)) {
-            return {
-                status: 400,
-                body: 'Invalid name provided.'
-            };
+            throw new Error("Invalid name provided");
+            //return {
+                //status: 400,
+                //body: 'Invalid name provided.'
+            //};
         }
         console.log("Name is valid, creating greeting...");
         const greeting = create_greeting(name);
