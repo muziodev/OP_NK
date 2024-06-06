@@ -6,7 +6,7 @@ export async function trigger_test(request: HttpRequest, context: InvocationCont
     try {
         console.log("Received request:", request.body);  // Log incoming request data
         const name: string = request.query.get('name') || await request.text();
-        console.log(`Received request with name: ${name}`);
+        console.log("Extracted name:", name);  // Confirm name is extracted correctly
         if (!name) {
             throw new Error("No name provided");
         }
